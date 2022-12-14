@@ -24,7 +24,7 @@ public class BookTagDaoImpl implements BookTagDao {
 
     @Override
     public List<BookTag> list() {
-        TypedQuery<BookTag> query = sessionFactory.getCurrentSession().createQuery("from BookTag as bt left join fetch bt.books as b");
+        TypedQuery<BookTag> query = sessionFactory.getCurrentSession().createQuery("from BookTag as bt left join fetch bt.books");
         return query.getResultList();
     }
 }
