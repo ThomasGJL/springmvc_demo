@@ -24,7 +24,7 @@ public class BookTagServiceImpl implements BookTagService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<BookTag> list() {
-        return bookTagDao.list();
+    public List<BookTag> list(BookTag bookTag) {
+        return bookTagDao.list(bookTag);
     }
 }

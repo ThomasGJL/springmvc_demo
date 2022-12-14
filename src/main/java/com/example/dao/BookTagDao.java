@@ -7,6 +7,6 @@ import java.util.List;
 public interface BookTagDao {
 
     List<BookTag> find(BookTag bookTag);
-    List<BookTag> list();
+    List<BookTag> list(BookTag bookTag);
 
 }

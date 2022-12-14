@@ -10,8 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Controller
@@ -39,9 +37,11 @@ public class BookController {
     }
 
     @GetMapping("/listBooksByTag")
-    public String listBooksByTag(Model model) {
+    public String listBooksByTag(Model model, @RequestParam String id) {
 
-        model.addAttribute("books", bookTagService.list());
+        BookTag bookTag = new BookTag();
+        bookTag.setId(Long.valueOf(id));
+        model.addAttribute("books", bookTagService.list(bookTag));
         return "listBooksByTag";
     }
 
