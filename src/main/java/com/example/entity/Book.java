@@ -1,19 +1,24 @@
 package com.example.entity;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.persistence.*;
-import javax.validation.constraints.Size;
-import static javax.persistence.GenerationType.IDENTITY;
 
 
 @Entity
 @Table(name = "book")
 public class Book implements java.io.Serializable {
-    // Fields
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", unique = true, nullable = false)
     private Long id;
+
+    @Column(name = "name", length = 20)
     private String name;
+
+    @Column(name = "author", length = 20)
     private String author;
+
+
     // Constructors
 
     /**
@@ -25,16 +30,13 @@ public class Book implements java.io.Serializable {
     /**
      * full constructor
      */
-    public Book(Long id, String name, String author) {
+    public Book(Long id, String name, String author, Long tid) {
         this.id = id;
         this.name = name;
         this.author = author;
     }
 
     // Property accessors
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
     public Long getId() {
         return this.id;
     }
@@ -44,7 +46,6 @@ public class Book implements java.io.Serializable {
     }
 
 
-    @Column(name = "name", length = 20)
     public String getName() {
         return this.name;
     }
@@ -53,7 +54,7 @@ public class Book implements java.io.Serializable {
         this.name = name;
     }
 
-    @Column(name = "author", length = 20)
+
     public String getAuthor() {
         return author;
     }
@@ -61,4 +62,6 @@ public class Book implements java.io.Serializable {
     public void setAuthor(String author) {
         this.author = author;
     }
+
+
 }

@@ -1,6 +1,7 @@
 package com.example.config;
 
 import com.example.entity.Book;
+import com.example.entity.BookTag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -20,10 +21,11 @@ public class HibernateConfig {
 
     @Bean
     public LocalSessionFactoryBean getSessionFactory() {
-        LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
-        factoryBean.setConfigLocation(context.getResource("classpath:hibernate.cfg.xml"));
-        factoryBean.setAnnotatedClasses(Book.class);
-        return factoryBean;
+        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+        sessionFactory.setConfigLocation(context.getResource("classpath:hibernate.cfg.xml"));
+        sessionFactory.setPackagesToScan("com.example.entity");
+
+        return sessionFactory;
     }
 
     @Bean

@@ -29,4 +29,6 @@ public class BookDaoImpl implements BookDao {
         TypedQuery<Book> query = sessionFactory.getCurrentSession().createQuery("from Book");
         return query.getResultList();
     }
+
+
 }
